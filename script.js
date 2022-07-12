@@ -16,16 +16,17 @@ async function getMovies() {
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
 
-        movieEl.innerHTML = `<img src="${IMGPATH + poster_path}"
+        movieEl.innerHTML = `
+                            <img src="${IMGPATH + poster_path}"
                                 alt="${title}"
-                                    />
+                            />
                             <div class="movie-info">
                                 <h3>${title}</h3>
                                 <span>${vote_average}</span>
                             </div>
                         `;
 
-                        document.body.appendChild(movieEl);
+                        main.appendChild(movieEl);
     });
 
     return respData;
