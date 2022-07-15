@@ -3,6 +3,10 @@ const IMGPATH = "https://image.tmdb.org/t/p/w1280";
 
 
 const main = document.querySelector('main');
+const form = document.querySelector('form');
+const search = document.querySelector('search');
+
+getMovies();
 
 async function getMovies() {
     const resp = await fetch(APIURL);
@@ -22,7 +26,7 @@ async function getMovies() {
                             />
                             <div class="movie-info">
                                 <h3>${title}</h3>
-                                <span>${vote_average}</span>
+                                <span class="${getClassByRate(vote_average)}">${vote_average}</span>
                             </div>
                         `;
 
@@ -32,4 +36,20 @@ async function getMovies() {
     return respData;
 }
 
-getMovies();
+function getClassByRate(vote) {
+    if(vote >= 8) {
+        return 'green';
+    } else if (vote >= 5) {
+        return 'orange';
+    } else {
+        return 'red';
+    }
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const searchTerm = search.value;
+})
+
+
